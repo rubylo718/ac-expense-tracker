@@ -8,5 +8,4 @@ router.use('/users', userRoute)
 router.use('/expense', expenseRoute)
 router.use('/', homeRoute)
 
-
 module.exports = router

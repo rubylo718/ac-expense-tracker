@@ -9,16 +9,35 @@
       </select>
       </br>
       <div>
-      <h5>總金額：</h5>  
+      <p class="mb-0" style="font-size: 20px">總金額：</p>  
       <p class="d-flex justify-content-end" style="color:#ff6600; font-weight:400; font-size:48px" id="totalAmount">
-        100000
+        {{ totalAmount }}
       </p>
       </div>
       <div>
         <ul class="list-group">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+        {{#each records}}
+          <li class="list-group-item">
+            <div class="row d-flex align-items-center"> 
+              <div class="col-auto d-flex justify-content-center">
+                <i style="color: Dodgerblue" class="fa-solid fa-house fa-2xl"></i>
+              </div>
+              <div class="col-4">
+                <h5>{{ this.name }}</h5>
+                <small>{{ this.simpleDate }}</small>
+              </div>
+              <div class="col-4"> 
+                <h5 style="text-align: right"> {{ this.amount}} </h5>
+              </div>
+              <div class="col-2 d-flex justify-content-end">
+                <a href="/" style="color: black"><i class="fa-solid fa-pen-to-square fa-lg mx-2"></i></a>
+                <form style="display: inline;">
+                  <i class="fa-solid fa-trash-can fa-lg"></i>
+                </form>
+              </div>
+            </div>  
+          </li>
+        {{/each}}
         </ul>
       </div>
       <div class="d-grid gap-2 col-6 mx-auto mt-4">

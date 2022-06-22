@@ -7,14 +7,16 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const helpers = require('handlebars-helpers')
 const indexRoute = require('./routes/index')
+const bodyParser = require('body-parser')
 
 const port = process.env.PORT
 const app = express()
 const multihelpers = helpers()
 
-app.engine('hbs', exphbs({ helpers: multihelpers, defaultLayout: 'main', extname: '.hbs'}))
+app.engine('hbs', exphbs({ helpers: multihelpers, defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(indexRoute)
 
 app.listen(port, () => {

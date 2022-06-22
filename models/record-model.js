@@ -8,6 +8,10 @@ const recordSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
+  simpleDate: {
+    type: String,
+    required: true
+  },
   amount: {
     type: Number,
     required: true,
@@ -16,13 +20,13 @@ const recordSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    index: true,
-    required: true
+    index: true
+    // required: true
   },
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
-    required: true
+    ref: 'Category'
+    // required: true
   },
   createAt: {
     type: Date,
