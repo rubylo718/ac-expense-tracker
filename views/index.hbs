@@ -18,8 +18,9 @@
         <ul class="list-group">
         {{#each records}}
           <li class="list-group-item">
-            <div class="row d-flex align-items-center"> 
+            <div class="row d-flex flex-nowrap align-items-center"> 
               <div class="col-auto d-flex justify-content-center">
+                {{!-- category icon --}}
                 <i style="color: Dodgerblue" class="fa-solid fa-house fa-2xl"></i>
               </div>
               <div class="col-4">
@@ -27,12 +28,18 @@
                 <small>{{ this.simpleDate }}</small>
               </div>
               <div class="col-4"> 
-                <h5 style="text-align: right"> {{ this.amount}} </h5>
+                <h5 style="text-align: right"> {{ this.amount }} </h5>
               </div>
               <div class="col-2 d-flex justify-content-end">
-                <a href="/" style="color: black"><i class="fa-solid fa-pen-to-square fa-lg mx-2"></i></a>
-                <form style="display: inline;">
-                  <i class="fa-solid fa-trash-can fa-lg"></i>
+                <a href="./expense/{{ this._id }}/edit" style="color: black">
+                  {{!-- edit icon --}}
+                  <i class="fa-solid fa-pen-to-square fa-lg mx-2"></i>
+                </a>
+                <form method="POST" action="./expense/{{ this._id }}?_method=DELETE" style="display: inline;">
+                  <button type="submit" style="border: none; background-color: transparent">
+                    {{!-- delete icon --}}
+                    <i class="fa-solid fa-trash-can fa-lg"></i>
+                  </button>
                 </form>
               </div>
             </div>  
