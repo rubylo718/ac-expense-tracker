@@ -20,8 +20,8 @@ const recordSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    index: true
-    // required: true
+    index: true,
+    required: true
   },
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,

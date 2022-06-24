@@ -7,34 +7,36 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
+  const userId = req.user._id
   const { name, date, category, amount } = req.body
   const simpleDate = req.body.date.toString()
-  const record = new Record({ name, date, simpleDate, category, amount })
+  const record = new Record({ name, date, simpleDate, category, amount, userId })
   return record.save()
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .lean()
     .then(record => res.render('edit', { record }))
     .catch(error => console.log(error))
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
+  const _id = req.params.id
   const { name, date, category, amount } = req.body
   const simpleDate = req.body.date.toString()
-  return Record.findByIdAndUpdate(id, { name, date, simpleDate, category, amount })
+  return Record.findByIdAndUpdate(_id, { name, date, simpleDate, category, amount })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findByIdAndDelete(id)
+  const _id = req.params.id
+  return Record.findByIdAndDelete(_id)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
