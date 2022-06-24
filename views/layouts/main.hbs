@@ -13,12 +13,16 @@
   {{!-- navbar --}}
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
       <div class="container-fluid">
-       
         <a class="navbar-brand" href="#">
            <i class="fa-solid fa-file-invoice-dollar"></i>
+           {{#if isAuthenticated }}
+             {{ user.name }}'s 
+           {{/if}}           
            Expense Tracker
         </a>
+        {{#if isAuthenticated }}
         <a class="btn btn-outline-dark" href="/users/logout" role="button">Logout</a>
+        {{/if}}
       </div>
     </nav>
   </header>
