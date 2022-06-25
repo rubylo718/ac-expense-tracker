@@ -8,6 +8,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  seedUserId: {
+    type: Number
+  },
   createAt: {
     type: Date,
     default: Date.now

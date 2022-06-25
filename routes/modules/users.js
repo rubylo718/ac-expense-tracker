@@ -8,10 +8,10 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 
-router.post('/login', 
-  passport.authenticate('local', { 
-    successRedirect:'/',
-    failureRedirect:'/users/login',
+router.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login'
     // failureFlash: true
   })
 )
@@ -25,13 +25,13 @@ router.post('/register', (req, res) => {
   User.findOne({ name })
     .then(foundUser => {
       if (foundUser) {
-        res.render('register', { name, password})
+        res.render('register', { name, password })
       } else {
         return bcrypt.genSalt(10)
-                 .then(salt => bcrypt.hash(password, salt))
-                 .then(hash => User.create({ name, password: hash }))
-                 .then(() => res.redirect('/'))
-                 .catch(error => console.log(error))
+          .then(salt => bcrypt.hash(password, salt))
+          .then(hash => User.create({ name, password: hash }))
+          .then(() => res.redirect('/'))
+          .catch(error => console.log(error))
       }
     })
 })
