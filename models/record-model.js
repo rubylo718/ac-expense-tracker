@@ -26,8 +26,8 @@ const recordSchema = new mongoose.Schema({
   },
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category'
-    // required: true
+    ref: 'Category',
+    required: true
   },
   createAt: {
     type: Date,

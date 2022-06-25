@@ -4,7 +4,7 @@ const catSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  iconClass: {
+  faIconClass: {
     type: String,
     required: true
   },
