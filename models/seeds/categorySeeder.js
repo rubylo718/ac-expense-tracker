@@ -4,13 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 const Category = require('../category-model')
 const db = require('../../config/mongoose')
 
-const SEEDER_CATEGORY = [
-  { name: '家居物業', faIconClass: 'fa-solid fa-house' },
-  { name: '交通出行', faIconClass: 'fa-solid fa-van-shuttle' },
-  { name: '休閒娛樂', faIconClass: 'fa-solid fa-face-grin-beam' },
-  { name: '餐飲食品', faIconClass: 'a-solid fa-utensils' },
-  { name: '其他', faIconClass: 'a-solid fa-pen' }
-]
+const SEEDER_CATEGORY = require('./categoryList.json')
 
 db.once('open', () => {
   console.log('mongodb connected and run the category seeder')

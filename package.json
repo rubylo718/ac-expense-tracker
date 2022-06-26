@@ -6,12 +6,17 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "seed": "node models/seeds/recordSeeder.js",
+    "seed": "node models/seeds/categorySeeder.js && node models/seeds/recordSeeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "standard": {
+    "igonre": [
+      "categoryList.json"
+    ]
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
