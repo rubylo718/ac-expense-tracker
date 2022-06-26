@@ -2,7 +2,7 @@
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <h1 class="text-center mt-3">Welcome</h1>
-      {{!-- {{> message}} --}}
+      {{> message}}
       <form action="/users/login" method="POST">
         <div class='mb-3'>
           <label for="name">Name</label>
@@ -14,7 +14,6 @@
         </div>
         <div class='d-grid'>
           <button type="submit" class="btn btn-info text-light mb-2">Login</button>
-          {{!-- <a href="/auth/facebook" class="btn btn-primary text-light">Facebook Login</a> --}}
         </div>
       </form>
       <p class="mt-4">

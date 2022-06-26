@@ -11,8 +11,8 @@ router.get('/login', (req, res) => {
 router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/users/login'
-    // failureFlash: true
+    failureRedirect: '/users/login',
+    failureFlash: true
   })
 )
 
@@ -20,20 +20,36 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
-router.post('/register', (req, res) => {
-  const { name, password } = req.body
-  User.findOne({ name })
-    .then(foundUser => {
-      if (foundUser) {
-        res.render('register', { name, password })
-      } else {
-        return bcrypt.genSalt(10)
-          .then(salt => bcrypt.hash(password, salt))
-          .then(hash => User.create({ name, password: hash }))
-          .then(() => res.redirect('/'))
-          .catch(error => console.log(error))
-      }
-    })
+router.post('/register', async (req, res) => {
+  const { name, password, confirmpassword } = req.body
+  const errors = []
+  const errorItem = []
+  const userExisted = await User.findOne({ name })
+  if (userExisted) {
+    errors.push({ message: 'This name has been registered.' })
+  }
+  if (!name || !password || !confirmpassword) {
+    errors.push({ message: 'Please fill in the required information.' })
+    if (!name) { errorItem.push('errorName') }
+    if (!password) { errorItem.push('errorPwd') }
+    if (!confirmpassword) { errorItem.push('errorConPwd') }
+  }
+  if (password !== confirmpassword) {
+    errors.push({ message: 'The confirm password does not match the password. Please check.' })
+  }
+  if (errors.length) {
+    return res.render('register', { errorItem, errors, name, password, confirmpassword })
+  }
+  try {
+    const hash = await bcrypt.hash(password, 10)
+    await User.create({ name, password: hash })
+    req.flash('success_msg', 'Register successfully.')
+    res.redirect('/auth/login')
+  } catch (error) {
+    req.flash('warning_msg', 'Something wen wrong.')
+    console.log(error)
+    res.redirect('/auth/register')
+  }
 })
 
 router.get('/logout', (req, res) => {
@@ -42,6 +58,7 @@ router.get('/logout', (req, res) => {
       return next(error)
     }
   })
+  req.flash('success_msg', 'Logout successfully.')
   res.redirect('/users/login')
 })
 

@@ -9,11 +9,11 @@ router.get('/', async (req, res) => {
     const userId = req.user._id
 
     const filterCategoryValue = req.query.categoryFilter
-    const filterCategory = filterCategoryValue? await Category.findOne({ id: filterCategoryValue }).lean(): null
-    const filterCategoryId = filterCategory? filterCategory._id : null
-    const filterCategoryTitle = filterCategory? filterCategory.name : "全部類型"
+    const filterCategory = filterCategoryValue ? await Category.findOne({ id: filterCategoryValue }).lean() : null
+    const filterCategoryId = filterCategory ? filterCategory._id : null
+    const filterCategoryTitle = filterCategory ? filterCategory.name : '全部類型'
 
-    const userRecords = filterCategory? await Record.find({ userId, categoryId: filterCategoryId }).lean() : await Record.find({ userId }).lean()
+    const userRecords = filterCategory ? await Record.find({ userId, categoryId: filterCategoryId }).lean() : await Record.find({ userId }).lean()
     let totalAmount = 0
     await Promise.all(
       userRecords.map(async record => {
@@ -26,6 +26,6 @@ router.get('/', async (req, res) => {
   } catch (error) {
     console.log(error)
   }
-})     
+})
 
 module.exports = router
