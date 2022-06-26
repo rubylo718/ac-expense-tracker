@@ -25,17 +25,15 @@ Run the App:
 
 ```
 npm run dev // with nodemon
-
 ```
 
 Run the seeder:
 
 ```
 npm run seed // with nodemon
-
 ```
 
-Heroku link: 
+Heroku link: https://peaceful-brook-83746.herokuapp.com/users/login
 
 ## Main Packages
 
