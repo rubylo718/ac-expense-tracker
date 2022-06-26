@@ -5,7 +5,7 @@ This an assignment of AlphaCamp Term 3 week 2.
 
 ## Target
 
-Build a web applicaton of expense recording from scratch.
+Build a web applicaton from scratch.
 
 ## User Story
 
@@ -37,13 +37,17 @@ Heroku link: https://peaceful-brook-83746.herokuapp.com/users/login
 
 ## Main Packages
 
-express: 4.18.1
+Runtime Environment: Node.js @16.14.2
 
-express-handlebars: 4.0.2
+Frameword: Express @4.18.1
 
-mongoose: 6.4.0
+Database: Mongoose @6.4.0
 
-passport: 0.6.0
+View Engine: Express-handlebars @4.0.2
+
+Environment Valueables Management: donenv @16.0.1
+
+Please refer to "package.json" for other dependencies.
 
 ## Author
 
