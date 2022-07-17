@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     const filterCategoryValue = req.query.categoryFilter
     const filterCategory = filterCategoryValue ? await Category.findOne({ id: filterCategoryValue }).lean() : null
     const filterCategoryId = filterCategory ? filterCategory._id : null
-    const filterCategoryTitle = filterCategory ? filterCategory.name : '全部類型'
+    console.log('value', filterCategoryValue,typeof(filterCategoryValue))
 
     const userRecords = filterCategory ? await Record.find({ userId, categoryId: filterCategoryId }).lean() : await Record.find({ userId }).lean()
     let totalAmount = 0
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
         totalAmount += record.amount
       })
     )
-    res.render('index', { categories, userRecords, totalAmount, filterCategoryTitle })
+    res.render('index', { categories, userRecords, totalAmount, filterCategoryValue })
   } catch (error) {
     console.log(error)
   }
