@@ -31,10 +31,7 @@ router.get('/:id/edit', async (req, res) => {
   try {
     const categories = await Category.find().lean().sort('id')
     const _id = req.params.id
-    const record = await Record.findById(_id).lean()
-    const recordCat = await Category.findOne({ _id: record.categoryId }).lean()
-    record.catTitle = recordCat.name
-    record.carId = recordCat.id
+    const record = await Record.findById(_id).populate('categoryId').lean()
     res.render('edit', { categories, record })
   } catch (error) {
     console.log(error)

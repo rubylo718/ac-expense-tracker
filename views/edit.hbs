@@ -19,9 +19,8 @@
         <label for="editCategorySelect" class="col-sm-2 col-form-label">類別：</label>
         <div class="col-sm-10">
           <select class="form-select" id="editCategorySelect" name="category" required> 
-            <option value="{{ record.carId }}" selected>{{ record.catTitle }}</option>
             {{#each categories}}
-            <option value="{{ this.id }}">{{ this.name }}</option>
+            <option value="{{ this.id }}" {{#ifCond this.id ../record.categoryId.id}} selected {{/ifCond}}>{{ this.name }}</option>
             {{/each}}
           </select>
         </div>
