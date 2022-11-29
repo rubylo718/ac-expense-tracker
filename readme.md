@@ -5,7 +5,7 @@ This an assignment of AlphaCamp Term 3 week 2.
 
 ## Target
 
-Build a web applicaton from scratch.
+Build a web application from scratch.
 
 ## User Story
 
@@ -39,13 +39,13 @@ Heroku link: https://peaceful-brook-83746.herokuapp.com/users/login
 
 Runtime Environment: Node.js @16.14.2
 
-Frameword: Express @4.18.1
+Framework: Express @4.18.1
 
 Database: Mongoose @6.4.0
 
 View Engine: Express-handlebars @4.0.2
 
-Environment Valueables Management: donenv @16.0.1
+Environment Variables Management: dotenv @16.0.1
 
 Please refer to "package.json" for other dependencies.
 
@@ -56,3 +56,6 @@ Ruby Lo
 ## Submitted Date
 
 Jun, 26, 2022
+
+## Updated
+- 2022.11.29 - Add Dockerfile for Docker packaging. Correct typo.
