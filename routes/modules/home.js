@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
     const userRecords = (filterCategoryValue && filterCategoryValue !== '0') ? userAllRecords.filter(records => records.categoryId.id === filterCategoryValue) : userAllRecords
     let totalAmount = 0
     userRecords.forEach(record => totalAmount += record.amount)
-    userRecords.forEach(record => totalAmount += record.amount)
     res.render('index', { categories, userRecords, totalAmount, filterCategoryValue })
   } catch (error) {
     console.log(error)

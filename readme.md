@@ -69,5 +69,6 @@ node app.js
 Ruby Lo
 
 ## Main Updates
+- 2023.04.21 - Bugs fixed.
 - 2022.11.29 - Add Dockerfile for Docker packaging. Correct typo.
 - 2022.06.26 - First Release (as a key assignment of ALPHA Camp Term 3 week 2).
